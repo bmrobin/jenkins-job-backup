@@ -12,6 +12,7 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'com.adarshr.test-logger' version '1.2.0'
 }
 
 group 'com.cengage.content.services'
@@ -39,4 +40,9 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
 }
