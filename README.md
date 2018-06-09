@@ -16,4 +16,4 @@ Compile and build
 ./gradlew clean build
 ```
 
-Execute with `argv[0] argv[1]` for Jenkins username and password, respectively.
+Execute with `argv[0] argv[1] argv[2]` for Jenkins username, password, and hostname, respectively.
