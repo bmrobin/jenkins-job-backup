@@ -2,9 +2,9 @@ package backup
 
 import java.util.stream.Collectors
 
-class JobProcessor {
+class JobProcessor constructor(jenkinsAddress: String) {
 
-    val jenkinsAddress = "http://example.com"
+    private val address = jenkinsAddress
 
     /**
      * We need this in a dedicated class so that we can use the class loader to get the resource file.
@@ -14,12 +14,13 @@ class JobProcessor {
     }
 
     fun getJenkinsJobs(): Map<String, String> {
+
         return this.loadJobs()
                 .stream()
                 .filter { it -> it.isNotBlank() }
                 .collect(Collectors.toMap({ key -> key}, { value ->
                     val normalized = value.replace(" ", "%20")
-                    "$jenkinsAddress/job/$normalized/config.xml"
+                    "$address/job/$normalized/config.xml"
                 }))
     }
 

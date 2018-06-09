@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     val client = HttpClients.createDefault()
 
     try {
-        JobProcessor().getJenkinsJobs().forEach { job ->
+        JobProcessor(args[2]).getJenkinsJobs().forEach { job ->
             println("Restoring job: ${job.key}")
 
             val request = HttpPost(URI(job.value))
