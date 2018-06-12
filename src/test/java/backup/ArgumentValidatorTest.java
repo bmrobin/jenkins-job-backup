@@ -7,34 +7,42 @@ import org.junit.rules.ExpectedException;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
-public class CredentialsTest {
+public class ArgumentValidatorTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testCredentialString() {
-        String[] args = { "username", "P@ssw0rd!" };
-        String credentialString = CredentialsKt.getCredentialString(args);
+        BackupConfiguration config = new BackupConfiguration("username", "password",
+                "", "");
+        String credentialString = ArgumentValidatorKt.getCredentialString(config);
         assertThat(credentialString, not(containsString("username")));
-        assertThat(credentialString, not(containsString("P@ssw0rd!")));
+        assertThat(credentialString, not(containsString("password")));
+    }
+
+    @Test
+    public void testValidArguments() {
+        String[] args1 = { "", "", "", "" };
+        assertTrue(ArgumentValidatorKt.checkProgramArguments(args1));
+
+        String[] args2 = { "", "", "" };
+        assertTrue(ArgumentValidatorKt.checkProgramArguments(args2));
     }
 
     @Test
     public void testNullArguments() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Parameter specified as non-null is null");
-        expectedException.expectMessage("parameter args");
         String[] args = null;
-        CredentialsKt.getCredentialString(args);
+        ArgumentValidatorKt.checkProgramArguments(args);
     }
 
     @Test
     public void testBadArguments() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Username and password required in command line argument positions 1 and 2 respectively");
         String[] args = { "one" };
-        CredentialsKt.getCredentialString(args);
+        ArgumentValidatorKt.checkProgramArguments(args);
     }
 }
