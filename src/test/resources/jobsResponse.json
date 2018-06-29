@@ -1,0 +1,15 @@
+{
+  "_class": "hudson.model.Hudson",
+  "jobs": [
+    {
+      "_class": "hudson.maven.MavenModuleSet",
+      "name": "example-1",
+      "url": "https://jenkins.dummy/job/example-1/"
+    },
+    {
+      "_class": "hudson.maven.MavenModuleSet",
+      "name": "example-2",
+      "url": "https://jenkins.dummy/job/example-2/"
+    }
+  ]
+}
