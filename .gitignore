@@ -1,5 +1,10 @@
 build
 out
-.idea
 .gradle
+
+*.iml
+*.ipr
+*.iws
+.idea
+
 .DS_Store

@@ -1,12 +1,10 @@
 package backup.utils;
 
-import backup.models.BackupConfiguration;
-import backup.utils.ArgumentValidatorKt;
+import backup.config.BackupConfiguration;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

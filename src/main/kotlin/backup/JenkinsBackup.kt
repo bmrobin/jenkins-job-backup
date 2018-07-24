@@ -1,6 +1,6 @@
 package backup
 
-import backup.models.BackupConfiguration
+import backup.config.BackupConfiguration
 import backup.services.Backup
 import backup.utils.JobProcessor
 import backup.utils.getCredentialString

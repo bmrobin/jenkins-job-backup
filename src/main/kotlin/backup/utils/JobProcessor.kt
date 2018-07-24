@@ -1,6 +1,6 @@
 package backup.utils
 
-import backup.models.BackupConfiguration
+import backup.config.BackupConfiguration
 import backup.models.BackupJob
 import backup.models.JobsResponse
 import com.fasterxml.jackson.databind.ObjectMapper

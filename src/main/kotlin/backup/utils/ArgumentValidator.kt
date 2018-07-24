@@ -1,6 +1,6 @@
 package backup.utils
 
-import backup.models.BackupConfiguration
+import backup.config.BackupConfiguration
 import java.util.Base64
 
 fun getCredentialString(configuration: BackupConfiguration): String {

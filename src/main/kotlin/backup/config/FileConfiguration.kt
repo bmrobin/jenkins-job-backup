@@ -1,7 +1,6 @@
 package backup.config
 
 import backup.JenkinsBackup
-import backup.models.BackupConfiguration
 import backup.services.FileBackup
 import backup.utils.JobProcessor
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,9 +19,14 @@ class FileConfiguration {
     lateinit var configuration: BackupConfiguration
 
     @Bean
-    fun fileBackup() = CommandLineRunner {
+    fun fileBackup(): FileBackup {
+        return FileBackup()
+    }
+
+    @Bean
+    fun backup() = CommandLineRunner {
         val jobProcessor = JobProcessor(configuration)
-        val jenkinsBackup = JenkinsBackup(FileBackup(), jobProcessor)
+        val jenkinsBackup = JenkinsBackup(fileBackup(), jobProcessor)
         jenkinsBackup.backup(configuration)
     }
 

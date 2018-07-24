@@ -1,4 +1,4 @@
-package backup.models
+package backup.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration

@@ -4,11 +4,13 @@ import backup.models.BackupJob
 import backup.persistence.BackupRepository
 import org.apache.http.HttpEntity
 import org.apache.http.util.EntityUtils
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
+@Profile("database")
 class DatabaseBackup(val backupRepository: BackupRepository) : Backup() {
 
     override fun save(entity: HttpEntity, jobName: String, url: String) {
