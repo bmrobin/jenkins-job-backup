@@ -18,4 +18,16 @@ class DatabaseBackup(val backupRepository: BackupRepository) : Backup() {
         backupRepository.save(job)
         return
     }
+
+    override fun load(): List<BackupJob> {
+        var jobList: List<BackupJob> = emptyList()
+
+        try {
+            jobList = backupRepository.findAll().toList()
+        } catch (e: Exception) {
+            println("woops")
+        }
+
+        return jobList
+    }
 }
